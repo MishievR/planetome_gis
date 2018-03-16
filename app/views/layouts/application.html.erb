@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Planetome Spaces</title>
+    <%= csrf_meta_tags %>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+  </head>
+
+  <body>
+    <%= render 'layouts/navigation' %>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- <div class="col-12 col-sm-4 col-md-3 col-lg-2">
+        </div> -->
+        <!-- <div class="col-12 col-sm-8 col-md-9 col-lg-9 offset-lg-1"> -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <%= render 'layouts/footer' %>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [-73.985242, 40.748521], // starting position
+        zoom: 11 // starting zoom
+    });
+    map.on('mousemove', function (e) {
+        document.getElementById('info').innerHTML = e.lngLat.lat;
+        document.getElementById('info2').innerHTML = e.lngLat.lng;
+    });
+    map.on('click', function (e) {
+    	$.ajax({
+    		type: 'GET',
+    		url: 'http://35.231.10.5:5000/',
+    		cache: false,
+    		data: { coords: e.lngLat.lat + ',' + e.lngLat.lng },
+    		dataType: 'json',
+    		success: function (data) {
+    			var table = '<tr><th>Category</th><th>Score</th></tr><br';
+
+    			$.each(data.categories, function(){
+    				table += '<tr><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
+    			});
+
+    			$('#business_categories').html(table)
+
+          //
+    			table = '<tr><th>Brand</th><th>Category</th></tr>'
+
+    			$.each(data.nearby_brands, function(){
+    				table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td></tr>';
+    			});
+
+    			$('#nearby_brands').html(table)
+
+          //
+    			table = '<tr><td>Brand</td><td>Category</td><td>Score</td></tr>'
+
+    			$.each(data.recommended_brands, function(){
+    				table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
+    			});
+
+    			$('#recommended_brands').html(table)
+    		}
+    	});
+    //	location.href = "http://35.231.10.5:5001/?coords=" + e.lngLat.lat + ',' + e.lngLat.lng;
+    });
+    </script>
+  </body>
+</html>

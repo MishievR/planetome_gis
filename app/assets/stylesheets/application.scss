@@ -1,0 +1,137 @@
+@import "bootstrap";
+@import "pages";
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fafafa;
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:100%;
+}
+
+// table, tr, td {
+// 	border: 1px solid black;
+// 	border-collapse: collapse;
+// }
+
+.card-inner {
+  // border: 0px;
+  border-radius: 3px;
+  // border-left: 2px solid red;
+  // margin-left: -2px;
+}
+
+.card-leftsidebar-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+
+.btn-sidebar {
+  border-radius: 0px;
+  border: 0px;
+  text-align: left;
+  // margin-left: 10px;
+}
+
+.btn-menu-nav {
+  color: #000c18;
+}
+.search-row{
+  padding-top: 145px;
+  padding-bottom: 145px;
+}
+
+.tag-line-row {
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
+.search-input {
+  border-radius: 2px;
+  border: 0px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  color: #fff;
+  height: 45px;
+  font-weight: 300;
+}
+
+.search-button {
+  border-radius: 2px;
+  border: 0px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  height: 45px;
+  font-weight: 700;
+
+}
+
+.navbar-color-shadow {
+  background-color: #fff;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  height: 50px;
+}
+
+.card-planetome {
+  border-radius: 2px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-field-main {
+  border-radius: 5px;
+  height: 7em;
+}
+
+.card-img-top {
+  height: 7em;
+}
+
+.annotation-main {
+  font-weight: 300;
+  color: #534C4C;
+  font-size: 0.85em;
+}
+
+.footer {
+  margin-top: 35px;
+  display: block;
+}
+
+.footer-text {
+  font-weight: 300;
+  color: #534C4C;
+  font-size: 0.75em;
+}
+
+.card-img {
+  width: 100%;
+  height: 300px;
+  // object-fit: cover;
+  object-fit: cover;
+}
+
+.place-name {
+  color: #707070;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.place-statuses {
+  color: #707070;
+  font-weight: 300;
+}
+
+.fa-sun {
+  color: #FDF40F;
+}
+
+.card2 {
+  height: 450px;
+}
