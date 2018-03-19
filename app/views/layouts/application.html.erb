@@ -45,7 +45,7 @@
     		data: { coords: e.lngLat.lat + ',' + e.lngLat.lng },
     		dataType: 'json',
     		success: function (data) {
-    			var table = '<tr><th>Category</th><th>Score</th></tr><br';
+    			var table = '<tr><th>Category</th><th>Score</th></tr>';
 
     			$.each(data.categories, function(){
     				table += '<tr><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
@@ -63,7 +63,7 @@
     			$('#nearby_brands').html(table)
 
           //
-    			table = '<tr><td>Brand</td><td>Category</td><td>Score</td></tr>'
+    			table = '<tr><th>Brand</th><th>Category</th><th>Score</th></tr>'
 
     			$.each(data.recommended_brands, function(){
     				table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
