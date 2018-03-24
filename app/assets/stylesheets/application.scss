@@ -7,6 +7,7 @@ body {
   font-size: 13px;
   margin: 0;
   padding: 0;
+  color: #0D2645;
 }
 
 #map {
@@ -81,7 +82,7 @@ body {
 
 .card-planetome {
   border-radius: 2px;
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow:  0 0px 4px 0 rgba(0, 0, 0, 0.1), 0 0px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .card-field-main {
@@ -134,4 +135,26 @@ body {
 
 .card2 {
   height: 450px;
+}
+
+.btn-outline-primary-sidebar {
+  color: #434040;
+}
+
+.btn-outline-primary-sidebar:hover {
+  background-color: #0D2645;
+}
+
+.list-group-item-sidebar {
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+}
+
+.model-dialog-menu {
+  border: 0px;
+}
+
+.card-header-index {
+  background-color: #fff;
 }

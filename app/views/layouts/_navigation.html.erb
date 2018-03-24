@@ -6,22 +6,29 @@
   <!-- <div class="collapse navbar-collapse" id="navbarNavDropdown"> -->
     <ul class="navbar-nav mr-auto">
     </ul>
-
     <ul class="navbar-nav">
-      <form class="form-inline">
-        <a tabindex="0" class="btn btn-sm btn-link mr-2 btn-menu-nav" role="button" data-toggle="popover" data-trigger="focus" data-html="true" data-placement="bottom" data-content='
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="false">Sign In</a>
-          <div class="dropdown-divider"></div>
-          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-          <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-          <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
-        </div>
-        '>
+
+      <button type="button" class="btn  btn-sm btn-link mr-2 btn-menu-nav pr-5 " data-toggle="modal" data-target="#exampleModal">
         <i class="far fa-compass"></i>
-        <!-- <i class="fas fa-bars"></i> -->
-      </a>
-      </form>
+      </button>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content model-dialog-menu">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Menu</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <p>Menu is under development.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </ul>
   <!-- </div> -->
 </nav>
