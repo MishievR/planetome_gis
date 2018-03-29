@@ -10,19 +10,9 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
   </head>
-
   <body>
-
-
-
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.min.js'></script>
-     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css' type='text/css' />
-
-
-
-
-
-
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css' type='text/css' />
 
     <%= render 'layouts/navigation' %>
     <div class="container-fluid">
@@ -83,7 +73,7 @@
     	});
     //	location.href = "http://35.231.10.5:5001/?coords=" + e.lngLat.lat + ',' + e.lngLat.lng;
     });
-    
+
     map.addControl(new MapboxGeocoder({
         accessToken: mapboxgl.accessToken
     }), 'top-left');

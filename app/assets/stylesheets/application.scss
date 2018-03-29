@@ -17,16 +17,8 @@ body {
   width:100%;
 }
 
-// table, tr, td {
-// 	border: 1px solid black;
-// 	border-collapse: collapse;
-// }
-
 .card-inner {
-  // border: 0px;
   border-radius: 3px;
-  // border-left: 2px solid red;
-  // margin-left: -2px;
 }
 
 .card-leftsidebar-img {
@@ -35,12 +27,10 @@ body {
   object-fit: cover;
 }
 
-
 .btn-sidebar {
   border-radius: 0px;
   border: 0px;
   text-align: left;
-  // margin-left: 10px;
 }
 
 .btn-menu-nav {
@@ -71,7 +61,6 @@ body {
   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
   height: 45px;
   font-weight: 700;
-
 }
 
 .navbar-color-shadow {
@@ -81,8 +70,9 @@ body {
 }
 
 .card-planetome {
-  border-radius: 2px;
-  box-shadow:  0 0px 4px 0 rgba(0, 0, 0, 0.1), 0 0px 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 0px;
+  border: 0px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
 .card-field-main {
@@ -114,7 +104,6 @@ body {
 .card-img {
   width: 100%;
   height: 300px;
-  // object-fit: cover;
   object-fit: cover;
 }
 
@@ -148,7 +137,6 @@ body {
 .list-group-item-sidebar {
   margin-top: 0px;
   margin-bottom: 0px;
-
 }
 
 .model-dialog-menu {
@@ -157,4 +145,8 @@ body {
 
 .card-header-index {
   background-color: #fff;
+}
+
+.list-group-flush-test {
+  margin: 0px;
 }
