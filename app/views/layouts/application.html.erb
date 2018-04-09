@@ -36,15 +36,38 @@
         document.getElementById('info').innerHTML = e.lngLat.lat;
         document.getElementById('info2').innerHTML = e.lngLat.lng;
     });
+
+
+    map.on('click', function (e) {
+    	var cat_select = document.getElementById("category");
+    	var category = cat_select.options[cat_select.selectedIndex].value;
+    	$.ajax({
+    		type: 'GET',
+    		url: 'http://35.196.119.100:5001/explain',
+    		cache: false,
+    		data: { coords: e.lngLat.lat + ',' + e.lngLat.lng, category: category },
+    		dataType: 'json',
+    		success: function (data) {
+    			var table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Feature</th><th class="th-color" scope="col">Value</th><th class="th-color" scope="col">Delta</th></thead></tr>';
+    			$.each(data.arguments, function(){
+    				table += '<tbody><tr><td>'+this.feature+'</td><td>'+this.value+'</td><td>'+this.delta+'</td></tr></tbody>';
+    			});
+    			$('#arguments').html(table)
+    		}
+    	});
+    });
+
+
+
     map.on('click', function (e) {
     	$.ajax({
     		type: 'GET',
-    		url: 'http://35.231.10.5:5000/',
+    		url: 'http://35.196.119.100:5000/',
     		cache: false,
     		data: { coords: e.lngLat.lat + ',' + e.lngLat.lng },
     		dataType: 'json',
     		success: function (data) {
-    			var table = '<tr><th>Category</th><th>Score</th></tr>';
+    			var table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Category</th><th class="th-color" scope="col">Score</th></tr></thead>';
 
     			$.each(data.categories, function(){
     				table += '<tr><td>'+this.category+'</td><td>'+this.score+'</td></tr>';

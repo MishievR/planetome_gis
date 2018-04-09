@@ -65,44 +65,65 @@
         <h5 class="card-title">How It Works</h5>
         <p class="card-text">1. Navigate the map to your area.</p>
         <p class="card-text">1. Zoom in to see your building.</p>
-        <p class="card-text">2. Click on the building it to see the predictions. They will appear on the panel below the map.</p>
+        <p class="card-text">2. Click on the building it to see the recommendations.</p>
         <p class="card-text">For any type of questions and feedback, please, <a class="" href="mailto:roman@planetome.com" target="_blank" role="button">email us</a>.</p>
       </div>
     </div>
   </div>
 </div>
+<br>
+
+
 
 <br>
 <div class="row">
   <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+    <div class="card card-planetome">
+      <div class="card-body">
+        <h6 class="card-title">Select business category and tap on your building on the map.</h6>
+        <select class="form-control test" id='category' name='layer'>
+          <option value='cafe'>Cafe</option>
+          <option value='gym'>Gym</option>
+          <option value='furniture_store'>Furniture store</option>
+          <option value='clothing_store'>Clothing store</option>
+          <option value='bar'>Bar</option>
+          <option value='restaurant'>Restaurant</option>
+          <option value='convenience_store'>Convenience store</option>
+          <option value='laundry'>Laundry</option>
+          <option value='hair_care'>Hair care</option>
+          <option value='car_repair'>Car repair</option>
+          <option value='car_wash'>Car wash</option>
+          <option value='beauty_salon'>Beauty salon</option>
+          <option value='spa'>Spa</option>
+          <option value='home_goods_store'>Home goods store</option>
+          <option value='grocery_or_supermarket'>Grocery store or supermarket</option>
+          <option value='pharmacy'>Pharmacy</option>
+        </select>
+      </div>
+    </div>
     <div class="card card-planetome card2" >
       <div class="" id='map' >
       </div>
     </div>
   </div>
-
   <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
     <div class="card card-planetome">
       <div class="card-body">
         <h5 class="card-title">Recommended Business Categories</h5>
-        <p class="card-text">Higher "%" is a better opportunity for your property.</p>
-        <table class="point_info" id="business_categories">
+        <p class="card-text">In this section, we use our predictive model to suggest you what type of the business more likely should exist here. Higher "%" is a better opportunity for the property.</p>
+        <table class="table table-hover table-sm" id="business_categories">
         </table>
       </div>
     </div>
   </div>
-
-
-
-
 </div>
-<!-- <br>
+<br>
 <div class="card card-planetome" >
   <div class="card-header card-header-index">
-    <h5 class="card-title">Report | Alpha version</h5>
+    <h5 class="card-title">Report
+      <small class="text-muted">| Alpha version</small></h5>
   </div>
-  <div class="card-body">
-    <div class="card card-inner">
+    <!-- <div class="card card-inner">
       <div class="card-body">
         <h4 class="card-title">Longitude & Latitude position on the map above</h4>
         <p>
@@ -114,17 +135,37 @@
           <small class="" id='info2'></small>
         </p>
       </div>
-    </div>
-    <br>
-    <div class="card card-inner">
+    </div> -->
       <div class="card-body">
-        <h4 class="card-title">Recommended Business Categories</h4>
-        <p class="card-text">Higher "%" is a better opportunity for your property.</p>
-        <table class="point_info" id="business_categories">
+        <h4 class="card-title">Location data</h4>
+        <p class="card-text">Here we show you the data to help you streamline your decision-making process.</p>
+
+        <dl class="row">
+          <dt class="col-12 col-sm-12 col-xl-2 col-lg-2">Feature</dt>
+          <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">One data point. Where "cnt_" means "Count".</dd>
+
+          <dt class="col-12 col-sm-12 col-xl-2 col-lg-2">Value</dt>
+          <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">Value of the data point.</dd>
+
+          <dt class="col-12 col-sm-12 col-xl-2 col-lg-2">Delta</dt>
+          <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">The % that means how important is that Feature for this place and type of the business.</dd>
+<hr>
+          <dt class="col-12 col-sm-12 col-xl-2 col-lg-2"><i>Example</i></dt>
+          <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">Type: Cafe | Feature: cnt_movie_theater | Value: 5 | Delta: 35% <br>It means that for this location existence of 5 Movie Theaters is on 35% better for cafe then other.</dd>
+      </dl>
+
+        <!-- <p class="card-text">Description:
+          <br>
+          "Feature" - one data point. Where "cnt_" means "Count".
+          <br>
+          "Value" - value of the data point.
+          <br>
+          "Delta" - the % that means how important is that Feature for this place and type of the business.
+        </p> -->
+        <table class="table table-hover" id="arguments">
         </table>
       </div>
-    </div>
-    <br> -->
+    <br>
     <!-- <div class="card card-inner">
       <div class="card-body">
         <h4 class="card-title">Recommended brands</h4>
@@ -164,7 +205,6 @@
     </div> -->
 
 
-  </div>
 
 
 
