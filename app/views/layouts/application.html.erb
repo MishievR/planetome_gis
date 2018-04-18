@@ -4,6 +4,8 @@
     <title>Planetome Alpha</title>
     <%= csrf_meta_tags %>
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
@@ -11,19 +13,39 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
   </head>
   <body>
+
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.min.js'></script>
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css' type='text/css' />
 
     <%= render 'layouts/navigation' %>
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+      <!-- <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12"> -->
           <%= yield %>
-        </div>
-      </div>
+        <!-- </div>
+      </div> -->
     </div>
     <%= render 'layouts/footer' %>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+
+    <script type="text/javascript" src="html2canvas.js"></script>
+      <script type="text/javascript">
+      $('#cmd').click(function () {
+       html2canvas($('#arguments'),{
+       onrendered:function(canvas){
+
+       var img=canvas.toDataURL("image/png");
+       var doc = new jsPDF();
+       doc.addImage(img,'JPEG',20,20);
+       doc.save('test.pdf');
+       }
+
+       });
+
+      });
+      </script>
+
     <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
     var map = new mapboxgl.Map({
@@ -48,18 +70,15 @@
     		data: { coords: e.lngLat.lat + ',' + e.lngLat.lng, category: category },
     		dataType: 'json',
     		success: function (data) {
-    			var table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Feature</th><th class="th-color" scope="col">Value</th><th class="th-color" scope="col">Delta</th></thead></tr>';
+          var table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Feature</th><th class="th-color" scope="col">Value</th><th class="th-color" scope="col">Delta</th></tr></thead>';
     			$.each(data.arguments, function(){
     				table += '<tbody><tr><td>'+this.feature+'</td><td>'+this.value+'</td><td>'+this.delta+'</td></tr></tbody>';
     			});
     			$('#arguments').html(table)
     		}
     	});
-    });
 
 
-
-    map.on('click', function (e) {
     	$.ajax({
     		type: 'GET',
     		url: 'http://35.196.119.100:5000/',
@@ -67,7 +86,7 @@
     		data: { coords: e.lngLat.lat + ',' + e.lngLat.lng },
     		dataType: 'json',
     		success: function (data) {
-    			var table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Category</th><th class="th-color" scope="col">Score</th></tr></thead>';
+    			var table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col-11">Type</th><th class="th-color" scope="col-1">Score</th></tr></thead>';
 
     			$.each(data.categories, function(){
     				table += '<tr><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
@@ -76,7 +95,7 @@
     			$('#business_categories').html(table)
 
           //
-    			table = '<tr><th>Brand</th><th>Category</th></tr>'
+    			table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Brand</th><th class="th-color" scope="col">Type</th></tr></thead>'
 
     			$.each(data.nearby_brands, function(){
     				table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td></tr>';
@@ -85,10 +104,14 @@
     			$('#nearby_brands').html(table)
 
           //
-    			table = '<tr><th>Brand</th><th>Category</th><th>Score</th></tr>'
+    			table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Brand</th><th class="th-color" scope="col">Type</th><th class="th-color" scope="col">Planetome Similarity Index</th></tr></thead>'
 
     			$.each(data.recommended_brands, function(){
-    				table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
+            if (this.category.toLowerCase() == category.toLowerCase()) {
+              table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
+            }
+
+    				// table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
     			});
 
     			$('#recommended_brands').html(table)
@@ -101,5 +124,7 @@
         accessToken: mapboxgl.accessToken
     }), 'top-left');
     </script>
+
+
   </body>
 </html>

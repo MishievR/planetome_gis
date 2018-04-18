@@ -1,14 +1,22 @@
 @import "bootstrap";
 @import "pages";
 
+:root {
+  --main-color: #0A203B;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #fafafa;
   font-size: 13px;
   margin: 0;
   padding: 0;
-  color: #0D2645;
+  color: var(--main-color);
 }
+
+
+
+
 
 #map {
   position:absolute;
@@ -25,6 +33,12 @@ body {
   width: 100%;
   height: 250px;
   object-fit: cover;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
+}
+
+.list-group-item-text {
+  border: 0px;
 }
 
 .btn-sidebar {
@@ -131,7 +145,7 @@ body {
 }
 
 .btn-outline-primary-sidebar:hover {
-  background-color: #0D2645;
+  background-color: var(--main-color);
 }
 
 .list-group-item-sidebar {
@@ -151,14 +165,33 @@ body {
   margin: 0px;
 }
 
-.test {
-  border: 1px;
+#category {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  // background-color: #fafafa;
+  border: 1px solid var(--main-color);
+  border-radius: 1px;
+  height: 35px;
+  background: url(https://farm1.staticflickr.com/896/39697554230_aa7d8771b4.jpg) 98% / 3% no-repeat #fff;
+  color: #0D2645;
 }
 
+#category:hover {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  // background-color: #fafafa;
+  border: 1px solid #223D5F;
+}
+
+
 .thead-dark1 {
-  background-color: #0D2645;
+  background-color: var(--main-color);
+
 }
 
 .th-color {
   color: #fff;
+
 }

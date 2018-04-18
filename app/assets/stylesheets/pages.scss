@@ -10,3 +10,39 @@
   border: 0px;
   border-radius: 2px;
 }
+
+.btn-planetome {
+  border-radius: 1px;
+  background-color: var(--main-color);
+  border: 0px;
+  // font-size: 15px;
+  // font-weight: 300;
+}
+
+.btn-planetome:hover {
+  // background-color: #183457;
+  background-color: #223D5F;
+}
+
+
+.title-border {
+  margin-left: -10px;
+  border-left: 2px solid var(--main-color);
+
+}
+.title-border h5 {
+  margin-left: 8px;
+}
+
+.link-style {
+  color: var(--main-color);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.link-style:hover {
+  color: #fff;
+  background-color: #223D5F;
+  font-weight: 300;
+  text-decoration: none;
+}
