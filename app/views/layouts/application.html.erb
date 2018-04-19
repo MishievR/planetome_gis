@@ -60,69 +60,236 @@
     });
 
 
-    map.on('click', function (e) {
-    	var cat_select = document.getElementById("category");
-    	var category = cat_select.options[cat_select.selectedIndex].value;
-    	$.ajax({
-    		type: 'GET',
-    		url: 'http://35.196.119.100:5001/explain',
-    		cache: false,
-    		data: { coords: e.lngLat.lat + ',' + e.lngLat.lng, category: category },
-    		dataType: 'json',
-    		success: function (data) {
-          var table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Feature</th><th class="th-color" scope="col">Value</th><th class="th-color" scope="col">Delta</th></tr></thead>';
-    			$.each(data.arguments, function(){
-    				table += '<tbody><tr><td>'+this.feature+'</td><td>'+this.value+'</td><td>'+this.delta+'</td></tr></tbody>';
-    			});
-    			$('#arguments').html(table)
+    var marker;
+    var cur_coords;
+
+
+    function update_results(coords) {
+    	// create a HTML element for each feature
+
+    	if (coords) {
+    		var el = document.createElement('div');
+    		el.className = 'marker';
+
+    		if (marker){
+    			marker.remove();
     		}
-    	});
+    		// make a marker for each feature and add to the map
+    		marker = new mapboxgl.Marker(el)
+    			.setLngLat(coords)
+    			.addTo(map);
+    		cur_coords = coords;
+    	} else {
+    		coords = cur_coords;
+    	}
+
+        var cat_select = document.getElementById("category");
+        var category = cat_select.options[cat_select.selectedIndex].value;
+        $.ajax({
+          type: 'GET',
+          url: 'http://35.196.119.100:5001/explain',
+          cache: false,
+          data: { coords: coords[1] + ',' + coords[0], category: category },
+          dataType: 'json',
+          success: function (data) {
+            var table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Feature</th><th class="th-color" scope="col">Value</th><th class="th-color" scope="col">Delta</th></tr></thead>';
+            $.each(data.arguments, function(){
+              table += '<tbody><tr><td>'+this.feature+'</td><td>'+this.value+'</td><td>'+this.delta+'</td></tr></tbody>';
+            });
+            $('#arguments').html(table)
+          }
+        });
 
 
-    	$.ajax({
-    		type: 'GET',
-    		url: 'http://35.196.119.100:5000/',
-    		cache: false,
-    		data: { coords: e.lngLat.lat + ',' + e.lngLat.lng },
-    		dataType: 'json',
-    		success: function (data) {
-    			var table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col-11">Type</th><th class="th-color" scope="col-1">Score</th></tr></thead>';
+    	// var cat_select = document.getElementById("category");
+    	// var category = cat_select.options[cat_select.selectedIndex].value;
+    	// $.ajax({
+    	// 	type: 'GET',
+    	// 	url: 'http://35.196.119.100:5001/explain',
+    	// 	cache: false,
+    	// 	data: { coords: coords[1] + ',' + coords[0], category: category },
+    	// 	dataType: 'json',
+    	// 	success: function (data) {
+    	// 		var table = '<tr><td>Feature</td><td>Value</td><td>Delta</td></tr>';
+    	// 		$.each(data.arguments, function(){
+    	// 			table += '<tr><td>'+this.feature+'</td><td>'+this.value+'</td><td>'+this.delta+'</td></tr>';
+    	// 		});
+    	// 		$('#arguments').html(table)
+    	// 	}
+    	// });
 
-    			$.each(data.categories, function(){
-    				table += '<tr><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
-    			});
+      $.ajax({
+        type: 'GET',
+        url: 'http://35.196.119.100:5000/',
+        cache: false,
+        data: { coords: coords[1] + ',' + coords[0] },
+        dataType: 'json',
+        success: function (data) {
+          var table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col-11">Type</th><th class="th-color" scope="col-1">Score</th></tr></thead>';
 
-    			$('#business_categories').html(table)
+          $.each(data.categories, function(){
+            table += '<tr><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
+          });
+
+          $('#business_categories').html(table)
 
           //
-    			table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Brand</th><th class="th-color" scope="col">Type</th></tr></thead>'
+          table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Brand</th><th class="th-color" scope="col">Type</th></tr></thead>'
 
-    			$.each(data.nearby_brands, function(){
-    				table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td></tr>';
-    			});
+          $.each(data.nearby_brands, function(){
+            table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td></tr>';
+          });
 
-    			$('#nearby_brands').html(table)
+          $('#nearby_brands').html(table)
 
           //
-    			table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Brand</th><th class="th-color" scope="col">Type</th><th class="th-color" scope="col">Planetome Similarity Index</th></tr></thead>'
+          table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Brand</th><th class="th-color" scope="col">Type</th><th class="th-color" scope="col">Planetome Similarity Index</th></tr></thead>'
 
-    			$.each(data.recommended_brands, function(){
+          $.each(data.recommended_brands, function(){
             if (this.category.toLowerCase() == category.toLowerCase()) {
               table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
             }
 
-    				// table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
-    			});
+            // table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
+          });
 
-    			$('#recommended_brands').html(table)
-    		}
-    	});
+          $('#recommended_brands').html(table)
+
+          //
+
+          table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Brand</th><th class="th-color" scope="col">Type</th><th class="th-color" scope="col">Planetome Similarity Index</th></tr></thead>'
+
+          $.each(data.recommended_brands, function(){
+            table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+' ('+this.dist+')'+'</td></tr>';
+
+            // table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
+          });
+
+          $('#recommended_brands_all').html(table)
+        }
+      });
+    //
+    // 	$.ajax({
+    // 		type: 'GET',
+    // 		url: 'http://35.196.119.100:5000/',
+    // 		cache: false,
+    // 		data: { coords: coords[1] + ',' + coords[0] },
+    // 		dataType: 'json',
+    // 		success: function (data) {
+    // 			var table = '<tr><td>Category</td><td>Score</td></tr>';
+    // 			$.each(data.categories, function(){
+    // 				table += '<tr><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
+    // 			});
+    // 			$('#business_categories').html(table)
+    // //
+    // //			table = '<tr><td>Brand</td><td>Category</td></tr>'
+    // //			$.each(data.nearby_brands, function(){
+    // //				table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td></tr>';
+    // //			});
+    // //			$('#nearby_brands').html(table)
+    // //
+    // 			table = '<tr><td>Brand</td><td>Category</td><td>Score</td></tr>'
+    // 			$.each(data.recommended_brands, function(){
+    // 				if (this.category.toLowerCase() == category.toLowerCase()) {
+    // 				  table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
+    // 				}
+    // 			});
+    // 			$('#recommended_brands').html(table)
+    // 		}
+    // 	});
     //	location.href = "http://35.231.10.5:5001/?coords=" + e.lngLat.lat + ',' + e.lngLat.lng;
+    }
+    map.on('click', function (e) {
+
+    	update_results([e.lngLat.lng, e.lngLat.lat]);
     });
 
-    map.addControl(new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken
-    }), 'top-left');
+
+
+
+
+
+
+
+
+
+
+
+    // map.on('click', function (e) {
+    // 	var cat_select = document.getElementById("category");
+    // 	var category = cat_select.options[cat_select.selectedIndex].value;
+    // 	$.ajax({
+    // 		type: 'GET',
+    // 		url: 'http://35.196.119.100:5001/explain',
+    // 		cache: false,
+    // 		data: { coords: e.lngLat.lat + ',' + e.lngLat.lng, category: category },
+    // 		dataType: 'json',
+    // 		success: function (data) {
+    //       var table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Feature</th><th class="th-color" scope="col">Value</th><th class="th-color" scope="col">Delta</th></tr></thead>';
+    // 			$.each(data.arguments, function(){
+    // 				table += '<tbody><tr><td>'+this.feature+'</td><td>'+this.value+'</td><td>'+this.delta+'</td></tr></tbody>';
+    // 			});
+    // 			$('#arguments').html(table)
+    // 		}
+    // 	});
+
+
+    // 	$.ajax({
+    // 		type: 'GET',
+    // 		url: 'http://35.196.119.100:5000/',
+    // 		cache: false,
+    // 		data: { coords: e.lngLat.lat + ',' + e.lngLat.lng },
+    // 		dataType: 'json',
+    // 		success: function (data) {
+    // 			var table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col-11">Type</th><th class="th-color" scope="col-1">Score</th></tr></thead>';
+    //
+    // 			$.each(data.categories, function(){
+    // 				table += '<tr><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
+    // 			});
+    //
+    // 			$('#business_categories').html(table)
+    //
+    //       //
+    // 			table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Brand</th><th class="th-color" scope="col">Type</th></tr></thead>'
+    //
+    // 			$.each(data.nearby_brands, function(){
+    // 				table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td></tr>';
+    // 			});
+    //
+    // 			$('#nearby_brands').html(table)
+    //
+    //       //
+    // 			table = '<thead class="thead-dark1"><tr><th class="th-color" scope="col">Brand</th><th class="th-color" scope="col">Type</th><th class="th-color" scope="col">Planetome Similarity Index</th></tr></thead>'
+    //
+    // 			$.each(data.recommended_brands, function(){
+    //         if (this.category.toLowerCase() == category.toLowerCase()) {
+    //           table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
+    //         }
+    //
+    // 				// table += '<tr><td>'+this.brand+'</td><td>'+this.category+'</td><td>'+this.score+'</td></tr>';
+    // 			});
+    //
+    // 			$('#recommended_brands').html(table)
+    // 		}
+    // 	});
+    // //	location.href = "http://35.231.10.5:5001/?coords=" + e.lngLat.lat + ',' + e.lngLat.lng;
+    // });
+
+    // map.addControl(new MapboxGeocoder({
+    //     accessToken: mapboxgl.accessToken
+    // }), 'top-left');
+
+
+    var geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken
+    });
+    map.addControl(geocoder, 'top-left');
+    geocoder.on('result', function(ev) {
+    	update_results(ev.result.geometry.coordinates);
+    });
+
+
+
     </script>
 
 

@@ -148,7 +148,7 @@
           <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">Type: Cafe | Feature: cnt_movie_theater | Value: 5 | Delta: 35% <br>It means that for this location existence of 5 Movie Theaters is on 35% better for cafe then other.</dd>
         </dl>
             <h6 class="card-title">Select business category to see the location data.</h6>
-            <select class="form-control test" id='category' name='layer'>
+            <select class="form-control test" id='category' name='layer' onchange="update_results()">
               <option value='cafe'>Cafe</option>
               <option value='gym'>Gym</option>
               <option value='furniture_store'>Furniture store</option>

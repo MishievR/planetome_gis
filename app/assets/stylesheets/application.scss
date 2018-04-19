@@ -195,3 +195,22 @@ body {
   color: #fff;
 
 }
+
+.marker{
+		background: #000C18;
+		width: 4px;
+		height: 30px;
+		position: absolute;
+		top: -15px;
+	}
+	.marker:after {
+	  content: "";
+	  background: #000C18;
+	  width: 16px;
+	  height: 16px;
+	  border-radius: 50%;
+	  cursor: pointer;
+	  position: absolute;
+	  left: -6px;
+	}
+  

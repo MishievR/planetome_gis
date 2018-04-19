@@ -80,7 +80,7 @@
           <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">Type: Cafe | Feature: movie_theater | Value: 5 | Delta: 35% <br>It means that for this location existence of 5 Movie Theaters is on 35% better for cafe then other.</dd>
         </dl>
             <h6 class="card-title">Location data for:</h6>
-            <select class="form-control test" id='category' name='layer'>
+            <select class="form-control test" id='category' name='layer' onchange="update_results()">
               <option value='cafe'>Cafe</option>
               <option value='gym'>Gym</option>
               <option value='furniture_store'>Furniture store</option>
@@ -115,6 +115,23 @@
             <table class="table table-hover" id="recommended_brands">
             </table>
             <br>
+
+            <br>
+            <hr>
+            <div class="title-border">
+              <h5 class="card-title">All brands we suggest for this property:</h5>
+            </div>
+            <!-- <p class="card-text"> NOTE: At this time we do not include avarage brand’s location property SF in Planetome Similarity Index. It will be included in the next versions of Planetome Service.
+              <br> <br> TESTING MODE | Here you can see which brands, with total nationwide locations nubmer more than 50, we suggest as a tenant/buyer for your property.
+              <br> <br>
+              How we calculate this Index: We analized all locations of the brands who have more than 50 locations and we predict the probality of the brand to open a location here.
+            </p> -->
+            <br>
+            <table class="table table-hover" id="recommended_brands_all">
+            </table>
+            <br>
+
+
             <hr>
             <div class="title-border">
               <h5 class="card-title">Brands nearby <small class="text-muted">1000ft radius</small></h5>
