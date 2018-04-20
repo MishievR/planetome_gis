@@ -1,145 +1,40 @@
 <div class="container">
-
-<div class="row">
-  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-    <form>
-      <div class="row">
-        <div class="offset-md-2 col-md-8">
-          <div class="tag-line-row">
-            <h3 class="text-center">Understand the best use of your commercial property.</h3>
-          </div>
-        </div>
-      </div>
-    </form>
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+      <%= render 'pages/components/tagline' %>
+    </div>
   </div>
-</div>
-
-
-
-<div class="row">
-  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-    <h6 class="annotation-main">About</h6>
-      <div class="row">
-        <div class="col-12 ">
-          <div class="card card-planetome">
-            <div class="card-body">
-              <h5 class="card-title">How It Works</h5>
-              <p class="card-text">1. Navigate the map to your area.</p>
-              <p class="card-text">1. Zoom in to see your building.</p>
-              <p class="card-text">2. Click on the building it to see the recommendations.</p>
-              <p class="card-text">For any type of questions and feedback, please,<a class="link-style" href="mailto:roman@planetome.com" target="_blank" role="button"> email us. </a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <h6 class="annotation-main">Map</h6>
-          <div class="card card-planetome card2" >
-            <div class="" id='map' >
-            </div>
-          </div>
+            <%= render 'pages/components/map' %>
           <br>
         </div>
       </div>
-      <br>
       <h6 class="annotation-main">Categories</h6>
-      <div class="card card-planetome">
+      <%= render 'pages/components/categories'%>
+      <br>
+      <div class="card card-planetome" >
+        <div class="card-header card-header-index">
+          <h5 class="card-title">Report
+            <small class="text-muted">| Alpha version</small></h5>
+        </div>
         <div class="card-body">
-          <h5 class="card-title">Types of the business recommendation:</h5>
-          <p class="card-text">In this section, we use our predictive model to suggest you what type of the business more likely should exist here. <br> Higher "%" is a better opportunity for the property.</p>
-          <table class="table table-hover table-sm" id="business_categories">
-          </table>
-        </div>
-      </div>
-      <br>
-      <br>
-
-    <div class="card card-planetome" >
-      <div class="card-header card-header-index">
-        <h5 class="card-title">Report
-          <small class="text-muted">| Alpha version</small></h5>
-      </div>
-      <div class="card-body">
-        <div class="title-border">
-          <h5 id="cat" class="card-title">Location data</h5>
-        </div>
-        <p class="card-text">Here we show you the data to help you streamline your decision-making process.</p>
-        <dl class="row">
-          <dt class="col-12 col-sm-12 col-xl-2 col-lg-2">Feature</dt>
-          <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">One data point.</dd>
-
-          <dt class="col-12 col-sm-12 col-xl-2 col-lg-2">Value</dt>
-          <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">Value of the data point.</dd>
-
-          <dt class="col-12 col-sm-12 col-xl-2 col-lg-2">Delta</dt>
-          <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">The % that means how important is that Feature for this place and type of the business.</dd>
+          <%= render 'pages/components/report_components/selectcategory'%>
+          <br>
           <hr>
-          <dt class="col-12 col-sm-12 col-xl-2 col-lg-2"><i>Example</i></dt>
-          <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">Type: Cafe | Feature: movie_theater | Value: 5 | Delta: 35% <br>It means that for this location existence of 5 Movie Theaters is on 35% better for cafe then other.</dd>
-        </dl>
-            <h6 class="card-title">Location data for:</h6>
-            <select class="form-control test" id='category' name='layer' onchange="update_results()">
-              <option value='cafe'>Cafe</option>
-              <option value='gym'>Gym</option>
-              <option value='furniture_store'>Furniture store</option>
-              <option value='clothing_store'>Clothing store</option>
-              <option value='bar'>Bar</option>
-              <option value='restaurant'>Restaurant</option>
-              <option value='convenience_store'>Convenience store</option>
-              <option value='laundry'>Laundry</option>
-              <option value='hair_care'>Hair care</option>
-              <option value='car_repair'>Car repair</option>
-              <option value='car_wash'>Car wash</option>
-              <option value='beauty_salon'>Beauty salon</option>
-              <option value='spa'>Spa</option>
-              <option value='home_goods_store'>Home goods store</option>
-              <option value='grocery_or_supermarket'>Grocery store or supermarket</option>
-              <option value='pharmacy'>Pharmacy</option>
-            </select>
-            <br>
-            <table class="table table-hover table-sm" id="arguments">
-            </table>
-            <br>
-            <hr>
-            <div class="title-border">
-              <h5 class="card-title">Brands we suggest for this property:</h5>
-            </div>
-            <p class="card-text"> NOTE: At this time we do not include avarage brand’s location property SF in Planetome Similarity Index. It will be included in the next versions of Planetome Service.
-              <br> <br> TESTING MODE | Here you can see which brands, with total nationwide locations nubmer more than 50, we suggest as a tenant/buyer for your property.
-              <br> <br>
-              How we calculate this Index: We analized all locations of the brands who have more than 50 locations and we predict the probality of the brand to open a location here.
-            </p>
-            <br>
-            <table class="table table-hover" id="recommended_brands">
-            </table>
-            <br>
-
-            <br>
-            <hr>
-            <div class="title-border">
-              <h5 class="card-title">All brands we suggest for this property:</h5>
-            </div>
-            <!-- <p class="card-text"> NOTE: At this time we do not include avarage brand’s location property SF in Planetome Similarity Index. It will be included in the next versions of Planetome Service.
-              <br> <br> TESTING MODE | Here you can see which brands, with total nationwide locations nubmer more than 50, we suggest as a tenant/buyer for your property.
-              <br> <br>
-              How we calculate this Index: We analized all locations of the brands who have more than 50 locations and we predict the probality of the brand to open a location here.
-            </p> -->
-            <br>
-            <table class="table table-hover" id="recommended_brands_all">
-            </table>
-            <br>
-
-
-            <hr>
-            <div class="title-border">
-              <h5 class="card-title">Brands nearby <small class="text-muted">1000ft radius</small></h5>
-            </div>
-            <p class="card-text">Here is a list of businesses we found near your property.</p>
-            <br>
-            <table class="table table-hover" id="nearby_brands">
-            </table>
+          <%= render 'pages/components/report_components/brandscategory'%>
+          <br>
+          <hr>
+          <%= render 'pages/components/report_components/brandsfull' %>
+          <br>
+          <hr>
+          <%= render 'pages/components/report_components/brandsnearby'%>
+          <br>
+          <hr>
+          <%= render 'pages/components/report_components/locationdata'%>
         </div>
       </div>
     </div>

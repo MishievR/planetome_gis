@@ -1,240 +1,27 @@
-
-
 <div class="row">
   <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-    <form>
-      <div class="row">
-        <div class="offset-md-2 col-md-8">
-          <div class="tag-line-row">
-            <h3 class="text-center">Understand the best use of your commercial property.</h3>
-          </div>
-          <!-- <form class="form-group">
-            <div class="form-row search-row">
-              <div class="col-md-10 mb-3">
-                <input type="search" class="form-control search-input" placeholder="Where your property located?" aria-label="Search">
-              </div>
-              <div class="col-md-2 mx-auto ">
-                <button class="btn btn-outline-danger btn-block search-button" type="submit">Search</button>
-              </div>
-            </div>
-          </form> -->
-        </div>
-      </div>
-    </form>
+    <%= render 'pages/components/tagline' %>
   </div>
 </div>
-
-
-
 <div class="row">
   <div class="col-12 col-sm-4 col-md-3 col-lg-3 offset-xl-1 col-xl-2">
     <h6 class="annotation-main">Contacts</h6>
-    <%= render 'pages/leftsidebar' %>
+    <%= render 'pages/components/leftsidebar' %>
   </div>
-
   <div class="col-12 col-sm-8 col-md-9 col-lg-9 col-xl-8">
-    <h6 class="annotation-main">About</h6>
-    <!-- <div class="card text-center">
-      <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+        <h6 class="annotation-main">Map</h6>
+        <%= render 'pages/components/instructions' %>
+        <%= render 'pages/components/map' %>
+        <br>
       </div>
-
-
-      <div class="card-body">
-
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div> -->
-
-<div class="row">
-  <div class="col-12 ">
-    <div class="card card-planetome">
-      <div class="card-body">
-        <h5 class="card-title">How It Works</h5>
-        <p class="card-text">1. Navigate the map to your area.</p>
-        <p class="card-text">1. Zoom in to see your building.</p>
-        <p class="card-text">2. Click on the building it to see the recommendations.</p>
-        <p class="card-text">For any type of questions and feedback, please,<a class="link-style" href="mailto:roman@planetome.com" target="_blank" role="button"> email us. </a></p>
-      </div>
-    </div>
-  </div>
-</div>
-<br>
-
-
-
-<div class="row">
-  <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
-    <h6 class="annotation-main">Map</h6>
-
-    <div class="card card-planetome card2" >
-      <div class="" id='map' >
+      <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+        <h6 class="annotation-main">Categories</h6>
+        <%= render 'pages/components/categories' %>
       </div>
     </div>
     <br>
-
+    <%= render 'pages/components/report' %>
   </div>
-  <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
-    <h6 class="annotation-main">Categories</h6>
-
-    <div class="card card-planetome">
-      <div class="card-body">
-        <h5 class="card-title">Recommended Business Categories <i class="fas fa-info-circle"></i></h5>
-        <p class="card-text">In this section, we use our predictive model to suggest you what type of the business more likely should exist here. Higher "%" is a better opportunity for the property.</p>
-        <table class="table table-hover table-sm" id="business_categories">
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-<br>
-
-
-
-<br>
-
-<div class="card card-planetome" >
-
-  <div class="card-header card-header-index">
-    <h5 class="card-title">Report
-      <small class="text-muted">| Alpha version</small></h5>
-  </div>
-
-
-
-
-    <!-- <div class="card card-inner">
-      <div class="card-body">
-        <h4 class="card-title">Longitude & Latitude position on the map above</h4>
-        <p>
-          Longitude:
-          <small class="" id='info'>Navigate cursor on the map</small>
-        </p>
-        <p>
-          Latitude:
-          <small class="" id='info2'></small>
-        </p>
-      </div>
-    </div> -->
-      <div class="card-body">
-
-        <div class="title-border">
-          <h5 class="card-title">Location data</h5>
-        </div>
-        <p class="card-text">Here we show you the data to help you streamline your decision-making process.</p>
-        <dl class="row">
-          <dt class="col-12 col-sm-12 col-xl-2 col-lg-2">Feature</dt>
-          <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">One data point. Where "cnt_" means "Count".</dd>
-
-          <dt class="col-12 col-sm-12 col-xl-2 col-lg-2">Value</dt>
-          <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">Value of the data point.</dd>
-
-          <dt class="col-12 col-sm-12 col-xl-2 col-lg-2">Delta</dt>
-          <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">The % that means how important is that Feature for this place and type of the business.</dd>
-          <hr>
-          <dt class="col-12 col-sm-12 col-xl-2 col-lg-2"><i>Example</i></dt>
-          <dd class="col-12 col-sm-12 col-xl-10 col-lg-10">Type: Cafe | Feature: cnt_movie_theater | Value: 5 | Delta: 35% <br>It means that for this location existence of 5 Movie Theaters is on 35% better for cafe then other.</dd>
-        </dl>
-            <h6 class="card-title">Select business category to see the location data.</h6>
-            <select class="form-control test" id='category' name='layer' onchange="update_results()">
-              <option value='cafe'>Cafe</option>
-              <option value='gym'>Gym</option>
-              <option value='furniture_store'>Furniture store</option>
-              <option value='clothing_store'>Clothing store</option>
-              <option value='bar'>Bar</option>
-              <option value='restaurant'>Restaurant</option>
-              <option value='convenience_store'>Convenience store</option>
-              <option value='laundry'>Laundry</option>
-              <option value='hair_care'>Hair care</option>
-              <option value='car_repair'>Car repair</option>
-              <option value='car_wash'>Car wash</option>
-              <option value='beauty_salon'>Beauty salon</option>
-              <option value='spa'>Spa</option>
-              <option value='home_goods_store'>Home goods store</option>
-              <option value='grocery_or_supermarket'>Grocery store or supermarket</option>
-              <option value='pharmacy'>Pharmacy</option>
-            </select>
-            <br>
-            <p>
-
-              <button class="btn btn-sm btn-primary btn-planetome" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
-                Collapse/expand data results
-              </button>
-            </p>
-            <div class="collapse show" id="collapseExample">
-              <br>
-              <table class="table table-hover table-sm" id="arguments">
-              </table>
-            </div>
-
-
-
-        <br>
-        <hr>
-        <div class="title-border">
-          <h5 class="card-title">Recommended brands</h5>
-        </div>
-        <p class="card-text">TESTING MODE | Here you can see which brands, with total nationwide locations nubmer more than 50, we suggest as a tenant/buyer for your property.</p>
-        <br>
-        <table class="table table-hover" id="recommended_brands">
-        </table>
-
-        <br>
-        <hr>
-        <div class="title-border">
-          <h5 class="card-title">Brands nearby <small class="text-muted">1000ft radius</small></h5>
-        </div>
-        <p class="card-text">Here is a list of businesses we found near your property.</p>
-        <br>
-        <table class="table table-hover" id="nearby_brands">
-        </table>
-
-    <!-- <div class="card card-inner">
-      <div class="card-body">
-
-      </div>
-    </div>
-    <div class="card card-inner">
-      <div class="card-body">
-
-      </div>
-    </div> -->
-
-    <!-- <br>
-
-    <p class="card-text">This data is not very accurate right now, if you want to use it for the business purpose, please, contact us.</p>
-  </div>
-</div>
-<br> -->
-
-
-
-    <!-- <div class="card bg-dark text-white">
-      <img class="card-img" src="https://farm5.staticflickr.com/4675/39649691735_eef7b9cbd0_h.jpg" width="1600" height="1063" alt="Card image">
-      <div class="card-img-overlay">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text">Last updated 3 mins ago</p>
-      </div>
-    </div> -->
-
-
-
-
-
-
-</div>
-
 </div>

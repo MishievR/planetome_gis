@@ -1,5 +1,8 @@
 @import "bootstrap";
 @import "pages";
+@import "leftsidebar";
+@import "footer";
+@import "navigation";
 
 :root {
   --main-color: #0A203B;
@@ -14,105 +17,10 @@ body {
   color: var(--main-color);
 }
 
-
-
-
-
-#map {
-  position:absolute;
-  top:0;
-  bottom:0;
-  width:100%;
-}
-
-.card-inner {
-  border-radius: 3px;
-}
-
-.card-leftsidebar-img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-top-left-radius: 1px;
-  border-top-right-radius: 1px;
-}
-
-.list-group-item-text {
-  border: 0px;
-}
-
-.btn-sidebar {
-  border-radius: 0px;
-  border: 0px;
-  text-align: left;
-}
-
-.btn-menu-nav {
-  color: #000c18;
-}
-.search-row{
-  padding-top: 145px;
-  padding-bottom: 145px;
-}
-
-.tag-line-row {
-  padding-top: 45px;
-  padding-bottom: 45px;
-}
-
-.search-input {
-  border-radius: 2px;
-  border: 0px;
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
-  color: #fff;
-  height: 45px;
-  font-weight: 300;
-}
-
-.search-button {
-  border-radius: 2px;
-  border: 0px;
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
-  height: 45px;
-  font-weight: 700;
-}
-
-.navbar-color-shadow {
-  background-color: #fff;
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
-  height: 50px;
-}
-
 .card-planetome {
   border-radius: 0px;
   border: 0px;
   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
-}
-
-.card-field-main {
-  border-radius: 5px;
-  height: 7em;
-}
-
-.card-img-top {
-  height: 7em;
-}
-
-.annotation-main {
-  font-weight: 300;
-  color: #534C4C;
-  font-size: 0.85em;
-}
-
-.footer {
-  margin-top: 35px;
-  display: block;
-}
-
-.footer-text {
-  font-weight: 300;
-  color: #534C4C;
-  font-size: 0.75em;
 }
 
 .card-img {
@@ -121,96 +29,50 @@ body {
   object-fit: cover;
 }
 
-.place-name {
-  color: #707070;
-  font-weight: 300;
-  font-size: 18px;
-}
-
-.place-statuses {
-  color: #707070;
-  font-weight: 300;
-}
-
-.fa-sun {
-  color: #FDF40F;
-}
-
-.card2 {
-  height: 520px;
-}
-
-.btn-outline-primary-sidebar {
-  color: #434040;
-}
-
-.btn-outline-primary-sidebar:hover {
-  background-color: var(--main-color);
-}
-
-.list-group-item-sidebar {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-.model-dialog-menu {
-  border: 0px;
-}
-
-.card-header-index {
-  background-color: #fff;
-}
-
-.list-group-flush-test {
-  margin: 0px;
-}
-
-#category {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  // background-color: #fafafa;
-  border: 1px solid var(--main-color);
-  border-radius: 1px;
-  height: 35px;
-  background: url(https://farm1.staticflickr.com/896/39697554230_aa7d8771b4.jpg) 98% / 3% no-repeat #fff;
-  color: #0D2645;
-}
-
-#category:hover {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  // background-color: #fafafa;
-  border: 1px solid #223D5F;
-}
 
 
-.thead-dark1 {
-  background-color: var(--main-color);
 
-}
 
-.th-color {
-  color: #fff;
+// UNUSED CSS - DO NOT DELETE
 
-}
+// .search-input {
+//   border-radius: 2px;
+//   border: 0px;
+//   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+//   color: #fff;
+//   height: 45px;
+//   font-weight: 300;
+// }
 
-.marker{
-		background: #000C18;
-		width: 4px;
-		height: 30px;
-		position: absolute;
-		top: -15px;
-	}
-	.marker:after {
-	  content: "";
-	  background: #000C18;
-	  width: 16px;
-	  height: 16px;
-	  border-radius: 50%;
-	  cursor: pointer;
-	  position: absolute;
-	  left: -6px;
-	}
-  
+// .search-button {
+//   border-radius: 2px;
+//   border: 0px;
+//   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+//   height: 45px;
+//   font-weight: 700;
+// }
+
+// .card-field-main {
+//   border-radius: 5px;
+//   height: 7em;
+// }
+
+// .place-name {
+//   color: #707070;
+//   font-weight: 300;
+//   font-size: 18px;
+// }
+
+// .place-statuses {
+//   color: #707070;
+//   font-weight: 300;
+// }
+
+// .fa-sun {
+//   color: #FDF40F;
+// }
+
+// For _rightsidebar
+// .list-group-flush-test {
+//   margin: 0px;
+// }
